@@ -4,15 +4,11 @@
 //MIXINS
 //-----------------------------------------------------
 
-
-
 //-----------------------------------------------------
 //FONTS
 @import "fonts";
 //FONTS
 //-----------------------------------------------------
-
-
 
 //-----------------------------------------------------
 //ICON-FONTS
@@ -20,15 +16,11 @@
 //ICON-FONTS
 //-----------------------------------------------------
 
-
-
 //-----------------------------------------------------
 //VARIABLES
 @import "variables";
 //VARIABLES
 //-----------------------------------------------------
-
-
 
 //-----------------------------------------------------
 //RESET
@@ -36,13 +28,17 @@
 //RESET
 //-----------------------------------------------------
 
-
 //-----------------------------------------------------
 //GENERAL STYLES
 .wrapper {
 	width: 100%;
 	min-height: 100%;
 	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	font-family: 'Arlon';
 }
 
 .container {
@@ -53,17 +49,145 @@
 //GENERAL STYLES
 //-----------------------------------------------------
 
-
 //-----------------------------------------------------
 //STYLES
-@import "header";
-@import "footer";
+
 //STYLES
 //-----------------------------------------------------
-
 
 //-----------------------------------------------------
 //MAIN BLOCK
+.count {
+	display: flex;
+	justify-content: space-between;
+	margin: 0 0 40px 0;
+	&__item {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	&__image {
+		height: 25px;
+		width: 25px;
+		margin: 0 0 10px 0;
+		img {
+			width: 100%;
+		}
+	}
+	&__output-text {
+		&_o {
+			color: $green;
+		}
+		&_x {
+			color: $blue;
+		}
+		&_draw {
+			color: $grey;
+		}
+	}
+}
+.board {
+	display: grid;
+	grid-template-columns: 80px 80px 80px;
+	grid-template-rows: 80px 80px 80px;
+	margin: 0 0 40px 0;
+	&__item {
+		padding: 10px;
+		cursor: pointer;
+		img {
+			height: 100%;
+		}
+	}
+}
+.top-left {
+	border-bottom: 1px solid $grey;
+}
+.top-center {
+	border: 1px solid $grey;
+	border-top: none;
+}
+.top-right {
+	border-bottom: 1px solid $grey;
+}
+.middle-left {
+	border-bottom: 1px solid $grey;
+}
+.middle-center {
+	border: 1px solid $grey;
+	border-top: none;
+}
+.middle-right {
+	border-bottom: 1px solid $grey;
+}
+.bottom-left {
+}
+.bottom-center {
+	border-right: 1px solid $grey;
+	border-left: 1px solid $grey;
+}
+.bottom-right {
+}
+.turn {
+	display: flex;
+	position: relative;
+	width: 100px;
+	margin: 0 auto 20px;
+	border: 1px solid $grey;
+	border-radius: 50px;
+	&__image {
+		height: 50px;
+		width: 50px;
+		img {
+			width: 100%;
+			padding: 15px;
+		}
+		position: relative;
+		&_white {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			&.is-turn {
+				z-index: 1;
+			}
+		}
+	}
+	&__indicate {
+		position: absolute;
+		width: 52px;
+		height: 52px;
+		border-radius: 50%;
+		top: -1px;
+		&.x-turn {
+			background: $blue;
+			left: -1px;
+		}
+		&.o-turn {
+			background: $green;
+			right: -1px;
+		}
+	}
+}
+.controlls {
+	display: flex;
+	justify-content: space-between;
+	&__buttons {
+		background: $grey;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+	&__image {
+		height: 50px;
+		width: 50px;
+		img {
+			width: 100%;
+			padding: 15px
+		}
+	}
+}
+
+// .turn
 
 //MAIN BLOCK
 //-----------------------------------------------------
