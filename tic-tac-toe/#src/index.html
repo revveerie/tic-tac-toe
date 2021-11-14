@@ -6,13 +6,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.min.css">
-    <title>Document</title>
+    <title>Tic Tac Toe</title>
 </head>
 
 <body>
     <div class="wrapper">
-        @@include('_header.html')
-        @@include('_footer.html')
+        <div class="game-field">
+            <div class="game-field__count count">
+                <div class="count__item count__o">
+                    <div class="count__image">
+                        <img src="./img/rec.png">
+                    </div>
+                    <div class="count__output">
+                        <p class="count__output-text count__output-text_o"><span class="count__o-output">4</span> wins</p>
+                    </div>
+                </div>
+                <div class="count__item count__x">
+                    <div class="count__image">
+                        <img src="./img/x.png" alt="">
+                    </div>
+                    <div class="count__output">
+                        <p class="count__output-text count__output-text_x"><span class="count__x-output">2</span> wins</p>
+                    </div>
+                </div>
+                <div class="count__item count__draws">
+                    <div class="count__image">
+                        <img src="./img/weight-scale.png" alt="">
+                    </div>
+                    <div class="count__output">
+                        <p class="count__output-text count__output-text_draw"><span class="count__draws-output">2</span> draws</p>
+                    </div>
+                </div>
+            </div>
+            <div class="game-field_board board">
+                <div class="board__item top-left"></div>
+                <div class="board__item top-center"></div>
+                <div class="board__item top-right"></div>
+                <div class="board__item middle-left"></div>
+                <div class="board__item middle-center"></div>
+                <div class="board__item middle-right"></div>
+                <div class="board__item bottom-left"></div>
+                <div class="board__item bottom-center"></div>
+                <div class="board__item bottom-right"></div>
+            </div>
+            <div class="game-field__turn turn">
+                <div class="turn__x">
+                    <div class="turn__image">
+                        <img src="./img/x.png" class="turn__image_color">
+                        <img src="./img/x-w.png" class="turn__image_white is-turn">
+                    </div>
+                </div>
+                <div class="turn__o">
+                    <div class="turn__image">
+                        <img src="./img/rec.png" class="turn__image_color">
+                        <img src="./img/rec-w.png" class="turn__image_white">
+                    </div>
+                </div>
+                <div class="turn__indicate x-turn"></div>
+            </div>
+            <div class="game-field__controlls controlls">
+                <div class="controlls__reset">
+                    <div class="controlls__buttons controlls__image">
+                        <img src="./img/recycle.png">
+                    </div>
+                </div>
+                <div class="controlls__buttons controlls__settings">
+                    <div class="controlls__image">
+                        <img src="./img/settings.png">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @@include('_js.html')
 </body>
