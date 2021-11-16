@@ -202,12 +202,16 @@ h6 {
 }
 
 .board__item {
+  position: relative;
   padding: 10px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .board__item img {
   height: 100%;
+  position: relative;
+  z-index: -1;
 }
 
 .top-left {
@@ -263,14 +267,25 @@ h6 {
   padding: 15px;
 }
 
-.turn__image_white {
+.turn__image_white-x {
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
 }
 
-.turn__image_white.is-turn {
+.turn__image_white-x.is-turn {
+  z-index: 1;
+}
+
+.turn__image_white-o {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.turn__image_white-o.is-turn {
   z-index: 1;
 }
 
@@ -280,16 +295,29 @@ h6 {
   height: 52px;
   border-radius: 50%;
   top: -1px;
+  -webkit-transition: 400ms;
+  -o-transition: 400ms;
+  transition: 400ms;
 }
 
 .turn__indicate.x-turn {
+  -webkit-transition: 400ms;
+  -o-transition: 400ms;
+  transition: 400ms;
   background: #3989d4;
-  left: -1px;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 
 .turn__indicate.o-turn {
+  -webkit-transition: 400ms;
+  -o-transition: 400ms;
+  transition: 400ms;
   background: #39bcd4;
-  right: -1px;
+  -webkit-transform: translate(95%, 0);
+      -ms-transform: translate(95%, 0);
+          transform: translate(95%, 0);
 }
 
 .controlls {

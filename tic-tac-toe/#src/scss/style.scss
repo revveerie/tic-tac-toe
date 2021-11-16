@@ -93,10 +93,14 @@
 	grid-template-rows: 80px 80px 80px;
 	margin: 0 0 40px 0;
 	&__item {
+		position: relative;
 		padding: 10px;
 		cursor: pointer;
+		z-index: 1;
 		img {
 			height: 100%;
+			position: relative;
+			z-index: -1;
 		}
 	}
 }
@@ -143,7 +147,16 @@
 			padding: 15px;
 		}
 		position: relative;
-		&_white {
+		&_white-x {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			&.is-turn {
+				z-index: 1;
+			}
+		}
+		&_white-o {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -159,13 +172,18 @@
 		height: 52px;
 		border-radius: 50%;
 		top: -1px;
+		transition: 400ms;
 		&.x-turn {
+			transition: 400ms;
 			background: $blue;
-			left: -1px;
+			transform: translate(0, 0);
+			// left: -1px;
 		}
 		&.o-turn {
+			transition: 400ms;
 			background: $green;
-			right: -1px;
+			transform: translate(95%, 0);
+			// right: -3px;
 		}
 	}
 }
