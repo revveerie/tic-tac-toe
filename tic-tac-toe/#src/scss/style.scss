@@ -57,6 +57,47 @@
 
 //-----------------------------------------------------
 //MAIN BLOCK
+.game-field {
+	position: relative;
+	&__winner-card {
+		position: absolute;
+		background: $grey;
+		width: 200px;
+		height: 100px;
+		top: 41%;
+		left: 50%;
+		transform: translate(-50%, -40%);
+		padding: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 20px;
+		opacity: 0;
+		visibility: hidden;
+		z-index: -10;
+		transition: 400ms;
+		&.active {
+			opacity: 1;
+			visibility: visible;
+			z-index: 10;
+			transition: 400ms;
+		}
+	}
+	&__winner-card-content {
+
+	}
+	&__winner-card-text {
+		color: #fff
+
+	}
+	&__winner-card-output {
+		img {
+			height: 50px;
+		}
+
+	}
+}
+
 .count {
 	display: flex;
 	justify-content: space-between;
