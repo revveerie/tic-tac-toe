@@ -21,8 +21,8 @@ const clearField = () => {
         fieldItem.classList.remove('o');
     }
     draw = true;
-    gameIsLive = true,
-    xIsNext = true,
+    gameIsLive = true;
+    xIsNext = false;
     winner = null;
     funcCounter = 0;
     turnIndicate.classList.remove('o-turn');
@@ -45,6 +45,11 @@ const drawCheck = () => {
         let drawCounter = +document.querySelector('.count__draws-output').textContent;
         drawCounter ++;
         document.querySelector('.count__draws-output').textContent = drawCounter;
+        document.querySelector('.game-field__winner-card').classList.add('active')
+        document.querySelector('.game-field__winner-card-output').innerHTML = 'Draw!';
+        setTimeout(() => {
+            document.querySelector('.game-field__winner-card').classList.remove('active');
+        }, 3000);
         clearField();
     }
 }
@@ -58,10 +63,20 @@ const handleWinner = (letter) => {
         let xCounter = +document.querySelector('.count__x-output').textContent;
         xCounter ++;
         document.querySelector('.count__x-output').textContent = xCounter;
+        document.querySelector('.game-field__winner-card').classList.add('active');
+        document.querySelector('.game-field__winner-card-output').innerHTML = '<img src="./img/x.png">';
+        setTimeout(() => {
+            document.querySelector('.game-field__winner-card').classList.remove('active');
+        }, 3000);
     } else if (winner == 'o') {
         let oCounter = +document.querySelector('.count__o-output').textContent;
         oCounter ++;
         document.querySelector('.count__o-output').textContent = oCounter;
+        document.querySelector('.game-field__winner-card').classList.add('active')
+        document.querySelector('.game-field__winner-card-output').innerHTML = '<img src="./img/rec.png">';
+        setTimeout(() => {
+            document.querySelector('.game-field__winner-card').classList.remove('active');
+        }, 3000);
     }
     clearField();
 }
@@ -77,9 +92,7 @@ const gameStatus = () => {
     const bottomLeft = fieldItems[6].classList[2];
     const bottomCenter = fieldItems[7].classList[2];
     const bottomRight = fieldItems[8].classList[2];
-
     funcCounter ++;
-
     if (topLeft && topLeft === topCenter && topLeft === topRight) {
         handleWinner(topLeft);
     }
@@ -114,6 +127,7 @@ const handlerReset = (e) => {
         fieldItem.classList.remove('o');
     }
     clearField();
+    xIsNext = true;
     document.querySelector('.count__x-output').textContent = 0;
     document.querySelector('.count__o-output').textContent = 0;
     document.querySelector('.count__draws-output').textContent = 0;
@@ -123,7 +137,6 @@ const handlerReset = (e) => {
 const handleCellClick = (e) => {
     const location = e.target.classList[1];
     const classList = e.target.classList;
-
     if (classList[2] === 'x' || classList[2] === 'o') {
         return;
     }

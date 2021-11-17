@@ -146,6 +146,56 @@ h6 {
   padding: 0 15px;
 }
 
+.game-field {
+  position: relative;
+}
+
+.game-field__winner-card {
+  position: absolute;
+  background: #a4b5b8;
+  width: 200px;
+  height: 100px;
+  top: 41%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -40%);
+      -ms-transform: translate(-50%, -40%);
+          transform: translate(-50%, -40%);
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 20px;
+  opacity: 0;
+  visibility: hidden;
+  z-index: -10;
+  -webkit-transition: 400ms;
+  -o-transition: 400ms;
+  transition: 400ms;
+}
+
+.game-field__winner-card.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+  -webkit-transition: 400ms;
+  -o-transition: 400ms;
+  transition: 400ms;
+}
+
+.game-field__winner-card-text {
+  color: #fff;
+}
+
+.game-field__winner-card-output img {
+  height: 50px;
+}
+
 .count {
   display: -webkit-box;
   display: -ms-flexbox;
