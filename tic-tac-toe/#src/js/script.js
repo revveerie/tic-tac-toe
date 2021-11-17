@@ -1,4 +1,4 @@
-// html variables
+// HTML ELEMENTS
 let resetButton = document.querySelector('.controlls__reset'),
     settingsButton = document.querySelector('.controlls__settings'),
     fieldItems = document.querySelectorAll('.board__item'),
@@ -6,14 +6,50 @@ let resetButton = document.querySelector('.controlls__reset'),
     xTurn = document.querySelector('.turn__image_white-x'),
     turnIndicate = document.querySelector('.turn__indicate');
 
-// game variables
+// GAME VARIABLES
 let gameIsLive = true,
     xIsNext = true,
     winner = null,
     draw = true,
     funcCounter = 0;
 
-// game result
+// CLEAR GAME BOARD FUNCTION
+const clearField = () => {
+    for (const fieldItem of fieldItems) {
+        fieldItem.innerHTML = '';
+        fieldItem.classList.remove('x');
+        fieldItem.classList.remove('o');
+    }
+    draw = true;
+    gameIsLive = true,
+    xIsNext = true,
+    winner = null;
+    funcCounter = 0;
+    turnIndicate.classList.remove('o-turn');
+    turnIndicate.classList.add('x-turn');
+    oTurn.classList.remove('is-turn');
+    xTurn.classList.add('is-turn');
+}
+
+// SWITCH TOGGLER
+const toggleSwitch = () => {
+    turnIndicate.classList.toggle('o-turn');
+    turnIndicate.classList.toggle('x-turn');
+    oTurn.classList.toggle('is-turn');
+    xTurn.classList.toggle('is-turn');
+}
+
+// CHECK THE DRAW
+const drawCheck = () => {
+    if (funcCounter == 9 && draw == true) {
+        let drawCounter = +document.querySelector('.count__draws-output').textContent;
+        drawCounter ++;
+        document.querySelector('.count__draws-output').textContent = drawCounter;
+        clearField();
+    }
+}
+
+// CHECK GAME RESULT
 const handleWinner = (letter) => {
     draw = false;
     gameIsLive = false;
@@ -27,25 +63,10 @@ const handleWinner = (letter) => {
         oCounter ++;
         document.querySelector('.count__o-output').textContent = oCounter;
     }
-    setTimeout(() => {
-        for (const fieldItem of fieldItems) {
-            fieldItem.innerHTML = '';
-            fieldItem.classList.remove('x');
-            fieldItem.classList.remove('o');
-        }
-        draw = true;
-        gameIsLive = true,
-        xIsNext = true,
-        winner = null;
-        funcCounter = 0;
-        turnIndicate.classList.remove('o-turn');
-        turnIndicate.classList.add('x-turn');
-        oTurn.classList.remove('is-turn');
-        xTurn.classList.add('is-turn');
-    }, 3000);
+    clearField();
 }
 
-// check game status
+// CHEK GAME STATUS
 const gameStatus = () => {
     const topLeft = fieldItems[0].classList[2];
     const topCenter = fieldItems[1].classList[2];
@@ -85,28 +106,20 @@ const gameStatus = () => {
     }
 }
 
-// reset the progress
+// RESET THE PROGRESS
 const handlerReset = (e) => {
     for (const fieldItem of fieldItems) {
         fieldItem.innerHTML = '';
         fieldItem.classList.remove('x');
         fieldItem.classList.remove('o');
     }
-    gameIsLive = true,
-    xIsNext = true,
-    winner = null;
-    draw = true;
-    funcCounter = 0;
+    clearField();
     document.querySelector('.count__x-output').textContent = 0;
     document.querySelector('.count__o-output').textContent = 0;
     document.querySelector('.count__draws-output').textContent = 0;
-    turnIndicate.classList.remove('o-turn');
-    turnIndicate.classList.add('x-turn');
-    oTurn.classList.remove('is-turn');
-    xTurn.classList.add('is-turn');
 }
 
-// clicking board fields
+// CLICKING BOARD CELLS
 const handleCellClick = (e) => {
     const location = e.target.classList[1];
     const classList = e.target.classList;
@@ -118,69 +131,23 @@ const handleCellClick = (e) => {
         if (xIsNext) {
             e.target.innerHTML = '<img src="./img/x.png">';
             e.target.classList.add('x');
-            turnIndicate.classList.toggle('o-turn');
-            turnIndicate.classList.toggle('x-turn');
-            oTurn.classList.toggle('is-turn');
-            xTurn.classList.toggle('is-turn');
+            toggleSwitch();
             gameStatus();
-            if (funcCounter == 9 && draw == true) {
-                let drawCounter = +document.querySelector('.count__draws-output').textContent;
-                drawCounter ++;
-                document.querySelector('.count__draws-output').textContent = drawCounter;
-                setTimeout(() => {
-                    for (const fieldItem of fieldItems) {
-                        fieldItem.innerHTML = '';
-                        fieldItem.classList.remove('x');
-                        fieldItem.classList.remove('o');
-                    }
-                    draw = true;
-                    gameIsLive = true,
-                    xIsNext = true,
-                    winner = null;
-                    funcCounter = 0;
-                    turnIndicate.classList.remove('o-turn');
-                    turnIndicate.classList.add('x-turn');
-                    oTurn.classList.remove('is-turn');
-                    xTurn.classList.add('is-turn');
-                }, 3000);
-            }
+            drawCheck();
             xIsNext = !xIsNext;
         }
         else {
             e.target.innerHTML = '<img src="./img/rec.png">';
             e.target.classList.add('o');
-            turnIndicate.classList.toggle('o-turn');
-            turnIndicate.classList.toggle('x-turn');
-            oTurn.classList.toggle('is-turn');
-            xTurn.classList.toggle('is-turn');
+            toggleSwitch();
             gameStatus();
-            if (funcCounter == 9 && draw == true) {
-                let drawCounter = +document.querySelector('.count__draws-output').textContent;
-                drawCounter ++;
-                document.querySelector('.count__draws-output').textContent = drawCounter;
-                setTimeout(() => {
-                    for (const fieldItem of fieldItems) {
-                        fieldItem.innerHTML = '';
-                        fieldItem.classList.remove('x');
-                        fieldItem.classList.remove('o');
-                    }
-                    draw = true;
-                    gameIsLive = true,
-                    xIsNext = true,
-                    winner = null;
-                    funcCounter = 0;
-                    turnIndicate.classList.remove('o-turn');
-                    turnIndicate.classList.add('x-turn');
-                    oTurn.classList.remove('is-turn');
-                    xTurn.classList.add('is-turn');
-                }, 3000);
-            }
+            drawCheck();
             xIsNext = !xIsNext;
         }
     }
 }
 
-// clicking events
+// CLICK EVENTS
 resetButton.addEventListener('click', handlerReset);
 
 for (const fieldItem of fieldItems) {
