@@ -83,9 +83,6 @@
 			transition: 400ms;
 		}
 	}
-	&__winner-card-content {
-
-	}
 	&__winner-card-text {
 		color: #fff
 
@@ -95,6 +92,13 @@
 			height: 50px;
 		}
 
+	}
+	@media (max-width: 420px) {
+		height: 100vh;
+		padding: 20px 15px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 }
 
@@ -130,8 +134,8 @@
 }
 .board {
 	display: grid;
-	grid-template-columns: 80px 80px 80px;
-	grid-template-rows: 80px 80px 80px;
+	grid-template-columns: 100px 100px 100px;
+	grid-template-rows: 100px 100px 100px;
 	margin: 0 0 40px 0;
 	&__item {
 		position: relative;
@@ -143,6 +147,10 @@
 			position: relative;
 			z-index: -1;
 		}
+	}
+	@media (max-width: 320px) {
+		grid-template-columns: 80px 80px 80px;
+		grid-template-rows: 80px 80px 80px;
 	}
 }
 .top-left {
@@ -165,13 +173,9 @@
 .middle-right {
 	border-bottom: 1px solid $grey;
 }
-.bottom-left {
-}
 .bottom-center {
 	border-right: 1px solid $grey;
 	border-left: 1px solid $grey;
-}
-.bottom-right {
 }
 .turn {
 	display: flex;

@@ -246,8 +246,8 @@ h6 {
 
 .board {
   display: grid;
-  grid-template-columns: 80px 80px 80px;
-  grid-template-rows: 80px 80px 80px;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
   margin: 0 0 40px 0;
 }
 
@@ -394,6 +394,46 @@ h6 {
   width: 100%;
   padding: 15px;
 }
+
+@media (max-width: 420px) {
+  .game-field {
+    height: 100vh;
+    padding: 20px 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+@media (max-width: 320px) {
+  .board {
+    grid-template-columns: 80px 80px 80px;
+    grid-template-rows: 80px 80px 80px;
+  }
+}
 @supports (-webkit-appearance:none){
+
+}
+
+ @media (max-width: 420px){
+
+@supports (-webkit-appearance:none){
+
+}
+
+}
+
+ @media (max-width: 320px){
+
+@supports (-webkit-appearance:none){
+
+}
 
 }
