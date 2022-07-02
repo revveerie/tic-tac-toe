@@ -4,7 +4,7 @@
 
 ## Deploy
 
-https://vvyysotskaya-tic-tac-toe.netlify.app/
+https://revveerie-tic-tac-toe.netlify.app/
 
 ## Technologies used
 ![HTML](https://img.shields.io/badge/-HTML-090909?style=for-the-badge&logo=html5)
